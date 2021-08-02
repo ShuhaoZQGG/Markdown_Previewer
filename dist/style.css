@@ -1,0 +1,25 @@
+#previewer img {
+  max-width: 100%;
+}
+
+body{
+  background: lighten($backgroundBase, 12%);
+  background-color: pink;
+}
+
+#previewer{
+  background-color: #619e9e;
+}
+
+.previewer-title{
+  background-color:#079992;
+}
+
+#editor{
+  height: 100vh;
+  background-color: #dcdde1;
+}
+
+.editor-title{
+  background-color:#7f8fa6;
+}
