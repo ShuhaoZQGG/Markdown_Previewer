@@ -2,12 +2,8 @@
   max-width: 100%;
 }
 
-body{
-  background: lighten($backgroundBase, 12%);
-  background-color: pink;
-}
 
-#previewer{
+#preview{
   background-color: #619e9e;
 }
 
@@ -16,10 +12,51 @@ body{
 }
 
 #editor{
-  height: 100vh;
+  height: 50vh;
   background-color: #dcdde1;
 }
 
 .editor-title{
-  background-color:#7f8fa6;
+  background-color:#7f8fa6
+}
+
+i {
+    width: 25px;
+    margin-left: 50%
+  }
+.fa-arrows-alt{
+  margin-right: auto; 
+  }
+  
+.previewWrap {
+    max-width: 1000px;
+  }
+.editorWrap {
+    max-width: 1000px;
+  }
+
+.maximized {
+  width: 60vw;
+  min-height: 10vh;
+  
+}
+
+.maximized #editor {
+    height: 100vh;
+    width: 85vw;
+  }
+
+.maximized #preview {
+    position: absolute;
+    top: 40px;
+    left: 20px;
+    width: 85vw;
+  }
+.maximized .previewer-title{
+  position: absolute;
+  left: 20px;
+  width: 60%
+}
+.hide {
+  display: none;
 }

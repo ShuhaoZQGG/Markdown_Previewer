@@ -47,9 +47,14 @@ class APP extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: placeholder };
+      text: placeholder,
+      editorMaximize: false,
+      previewMaximize: false };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleEditorMaximize = this.handleEditorMaximize.bind(this);
+    this.handlePreviewMaximize =
+    this.handlePreviewMaximize.bind(this);
   }
   handleChange(event) {
     this.setState({
@@ -57,26 +62,46 @@ class APP extends React.Component {
 
   }
 
+  handleEditorMaximize() {
+    this.setState({
+      editorMaximize: !this.state.editorMaximize });
 
+  }
+
+  handlePreviewMaximize() {
+    this.setState({
+      previewMaximize:
+      !this.state.previewMaximize });
+
+  }
   render() {
+    const classes = this.state.editorMaximize ?
+    ['editorWrap maximized', 'previewWrap hide', 'fa fa-compress'] :
+    this.state.previewMaximize ?
+    ['editorWrap hide', 'previewWrap maximized', 'fa fa-compress'] :
+    ['editorWrap', 'previewWrap', 'fa fa-arrows-alt'];
 
-    //  const markdown = marked(this.state.text, { breaks: true });
     return /*#__PURE__*/(
+
       React.createElement("div", null, /*#__PURE__*/
+
       React.createElement("div", { className: "row" }, /*#__PURE__*/
       React.createElement("div", { className: "col-6" }, /*#__PURE__*/
-      React.createElement("div", null, /*#__PURE__*/
-      React.createElement("h3", { className: "editor-title" }, " Editor: ")), /*#__PURE__*/
+      React.createElement("div", { className: classes[0] }, /*#__PURE__*/
+      React.createElement("h3", { className: "editor-title" }, " Editor:   ", /*#__PURE__*/React.createElement("i", { className: classes[2], onClick: this.handleEditorMaximize })), /*#__PURE__*/
 
-      React.createElement("textarea", { className: "editor form-control p-3 rounded", id: "editor", text: this.state.text, onChange: this.handleChange }, " ")), /*#__PURE__*/
+
+      React.createElement("textarea", { className: "editor form-control p-3 rounded", id: "editor", value: this.state.text, onChange: this.handleChange }, " "))), /*#__PURE__*/
+
 
 
 
       React.createElement("div", { className: "col-6" }, /*#__PURE__*/
-      React.createElement("div", null, /*#__PURE__*/
-      React.createElement("h3", { className: "previewer-title" }, "Previewer:")), /*#__PURE__*/
+      React.createElement("div", { className: classes[1] }, /*#__PURE__*/
+      React.createElement("h3", { className: "previewer-title" }, "Preview: ", /*#__PURE__*/React.createElement("i", { className: classes[2], onClick: this.handlePreviewMaximize })), /*#__PURE__*/
 
-      React.createElement("div", { id: "previewer", dangerouslySetInnerHTML: { __html: marked(this.state.text, { breaks: true }) } })))));
+      React.createElement("div", { id: "preview", dangerouslySetInnerHTML: { __html: marked(this.state.text, { breaks: true }) } }))))));
+
 
 
 
